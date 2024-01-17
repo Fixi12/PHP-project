@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+    #student-info, #angajat-info {
+        background-color: #fff;
+        margin: 20px auto;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        width: 80%;
+        text-align: left;
+    }
+</style>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina Angajat</title>
+</head>
+<body>
+    <h1>Bun venit pe pagina angajatului</h1>
+    <p>Acestia sunt studentii din facultatea unde predati:</p>
+
+    <div id="angajat-info"></div>
+
+    <!-- Buton de încărcare fișier -->
+    <form action="#" method="post" enctype="multipart/form-data">
+        <label for="fileUpload">Încarcă fișier:</label>
+        <input type="file" name="fileUpload" id="fileUpload">
+        <button type="submit" name="uploadBtn">+</button>
+    </form>
+
+    <script>
+        // Utilizăm JavaScript pentru a face o cerere către server pentru informațiile angajatului
+        const xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+            if (this.readyState === 4 && this.status === 200) {
+                document.getElementById("angajat-info").innerHTML = this.responseText;
+            }
+        };
+        xhr.open("GET", "main1.php", true);
+        xhr.send();
+    </script>
+</body>
+</html>

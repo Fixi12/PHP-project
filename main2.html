@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        select {
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        .formular-container {
+            display: none;
+        }
+
+        .formular-container.active {
+            display: block;
+        }
+
+        #formularCrud {
+            background-color: #fff;
+            padding: 20px;
+            margin-top: 20px;
+            display: inline-block;
+            text-align: left;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        form {
+            margin: 10px 0;
+        }
+
+        input[type="text"], input[type="submit"], input[type="number"] {
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+    <script>
+        function afiseazaFormular(formularId) {
+            var formularContainers = document.querySelectorAll('.formular-container');
+            formularContainers.forEach(function(container) {
+                container.classList.remove('active');
+            });
+
+            var formularContainer = document.getElementById(formularId);
+            formularContainer.classList.add('active');
+        }
+    </script>
+</head>
+<body>
+<h1>Operatiunile decanului</h1>
+
+<select id="tabelSelect" onchange="afiseazaFormular(this.value)">
+    <option value="">Selectati un tabel</option>
+    <option value="studentForm">Formular Student</option>
+    <option value="angajatForm">Formular Angajat</option>
+</select>
+
+<div id="formularCrud">
+    <div id="studentForm" class="formular-container">
+        <form action="insert_student.php" method="post">
+            <input type="number" name="id_student" placeholder="ID Student" required><br>
+            <input type="text" name="nume" placeholder="Nume" required><br>
+            <input type="text" name="prenume" placeholder="Prenume" required><br>
+            <input type="number" name="grupa" placeholder="Grupa" required><br>
+            <input type="text" name="loc_camin" placeholder="Loc Camin" required><br>
+            <input type="text" name="cnp" placeholder="CNP" required><br>
+            <input type="submit" value="Insereaza">
+        </form>
+
+        <form action="update_student.php" method="post">
+            <input type="number" name="id_student" placeholder="ID Student" required><br>
+        <input type="text" name="nume" placeholder="Nume" required><br>
+        <input type="text" name="prenume" placeholder="Prenume" required><br>
+        <input type="number" name="grupa" placeholder="Grupa" required><br>
+        <input type="text" name="loc_camin" placeholder="Loc Camin" required><br>
+        <input type="text" name="cnp" placeholder="CNP" required><br>
+        <input type="submit" value="Updateaza">
+        </form>
+
+        <form action="delete_student.php" method="post">
+            <input type="number" name="id_student" placeholder="ID Student" required><br>
+            <input type="submit" value="Sterge">
+        </form>
+    </div>
+
+    <div id="angajatForm" class="formular-container">
+        <form action="insert_angajat.php" method="post">
+            <input type="number" name="id_angajat" placeholder="ID Angajat" required><br>
+        <input type="number" name="id_facultate" placeholder="ID Facultate" required><br>
+        <input type="number" name="id_departament" placeholder="ID Departament" required><br>
+        <input type="number" name="id_job" placeholder="ID Job" required><br>
+        <input type="text" name="nume" placeholder="Nume" required><br>
+        <input type="text" name="prenume" placeholder="Prenume" required><br>
+        <input type="text" name="adresa" placeholder="Adresa" required><br>
+        <input type="text" name="cnp" placeholder="CNP" required><br>
+        <input type="text" name="nume_materie" placeholder="Nume Materie"><br>
+        <input type="submit" value="Insereaza">
+        </form>
+
+        <form action="update_angajat.php" method="post">
+            <input type="number" name="id_angajat" placeholder="ID Angajat" required><br>
+        <input type="number" name="id_facultate" placeholder="ID Facultate" required><br>
+        <input type="number" name="id_departament" placeholder="ID Departament" required><br>
+        <input type="number" name="id_job" placeholder="ID Job" required><br>
+        <input type="text" name="nume" placeholder="Nume" required><br>
+        <input type="text" name="prenume" placeholder="Prenume" required><br>
+        <input type="text" name="adresa" placeholder="Adresa" required><br>
+        <input type="text" name="cnp" placeholder="CNP" required><br>
+        <input type="text" name="nume_materie" placeholder="Nume Materie"><br>
+        <input type="submit" value="Updateaza">
+        </form>
+
+        <form action="delete_angajat.php" method="post">
+             <input type="number" name="id_angajat" placeholder="ID Angajat" required><br>
+        <input type="submit" value="Sterge">
+        </form>
+    </div>
+</div>
+</body>
+</html>

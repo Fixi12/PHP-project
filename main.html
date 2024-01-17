@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+    #student-info, #angajat-info {
+        background-color: #fff;
+        margin: 20px auto;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        width: 80%;
+        text-align: left;
+    }
+</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina Student</title>
+</head>
+<body>
+    <h1>Bun venit pe pagina studentului</h1>
+
+    <div id="student-info"></div>
+
+    <script>
+        // Utilizăm JavaScript pentru a face o cerere către server pentru informațiile studentului
+        const xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+            if (this.readyState === 4 && this.status === 200) {
+                document.getElementById("student-info").innerHTML = this.responseText;
+            }
+        };
+        xhr.open("GET", "main.php", true);
+        xhr.send();
+    </script>
+</body>
+</html>
